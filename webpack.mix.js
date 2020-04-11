@@ -17,7 +17,7 @@ mix.js('resources/js/app.js', 'public/js')
         require('postcss-import'),
         require('postcss-nested'),
         require('postcss-url'),
-        require('tailwindcss'),
+        require('tailwindcss')('tailwind.js'),
     ]);
 
 if (!mix.isProd) {
