@@ -12,4 +12,19 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .postCss('resources/css/app.css', 'public/css', [
+        require('autoprefixer'),
+        require('postcss-import'),
+        require('postcss-nested'),
+        require('postcss-url'),
+        require('tailwindcss'),
+    ]);
+
+if (!mix.isProd) {
+    mix
+    .browserSync({
+        notify: false,
+        open: false,
+        proxy: __dirname.split('/').pop() + '.test',
+    })
+ }
